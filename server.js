@@ -8,10 +8,10 @@ const PORT = process.env.PORT || 3000;
 const ADMIN_PASSWORD = process.env.ADMIN_PASSWORD || 'tzco2026';
 const BUSINESS = {
   name: 'TZCO Printing & Design',
-  phone: '+255 700 000 000',
-  whatsapp: '255700000000',            // no + sign
+  phone: '+255 747072438',
+  whatsapp: '255747072438',            // no + sign
   email: 'info@tzco.co.tz',
-  address: 'Dodoma, Tanzania',
+  address: 'Arusha, Tanzania',
   hours: 'Mon–Sat: 8:00 – 18:00',
   mapLat: -6.1630,                     // change to your shop's exact location
   mapLng: 35.7516
