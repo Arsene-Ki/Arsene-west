@@ -414,8 +414,8 @@ footer{background:var(--blue-d);color:#cfe0f1;padding:50px 0 24px}
 <!-- ============ STATS ============ -->
 <div class="stats">
   <div class="container stats-grid">
-    <div><b data-count="1500">0</b><span>Projects delivered</span></div>
-    <div><b data-count="600">0</b><span>Happy clients</span></div>
+    <div><b data-count="150">0</b><span>Projects delivered</span></div>
+    <div><b data-count="88">0</b><span>Happy clients</span></div>
     <div><b data-count="8">0</b><span>Core services</span></div>
     <div><b data-count="24">0</b><span>Hour express options</span></div>
   </div>
