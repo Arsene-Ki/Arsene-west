@@ -20,14 +20,14 @@ const DATA_FILE = path.join(__dirname, 'data.json');
 
 /* ------------------------------- DATA ------------------------------------ */
 const SERVICES = [
-  { id: 'cards', icon: '💳', name: 'Business Cards', desc: 'Premium paper, matte or gloss, spot UV and more. TZS 50,000 per 100 cards.', price: 500, unit: 'per card' },
-  { id: 'flyers',   icon: '📄', name: 'Flyers & Brochures',   desc: 'Full-colour A5/A4 flyers, tri-fold and bi-fold brochures.', price: 450,    unit: 'per piece' },
-  { id: 'banners',  icon: '🚩', name: 'Banners & Roll-ups',   desc: 'Durable large-format banners for events and shops.',  price: 25000,  unit: 'per 1 square meter' },
+  { id: 'cards', icon: '💳', name: 'Business Cards', desc: 'Premium paper, matte or gloss, spot UV and more. TZS 30,000 per 100 cards.', price: 300, unit: 'per card' },
+  { id: 'flyers',   icon: '📄', name: 'Flyers & Brochures',   desc: 'Full-colour A5/A4 flyers, tri-fold and bi-fold brochures.', price: 350,    unit: 'per piece' },
+  { id: 'banners',  icon: '🚩', name: 'Banners & Roll-ups',   desc: 'Durable large-format banners for events and shops.',  price: 15000,  unit: 'per 1 square meter' },
   { id: 'tshirts',  icon: '👕', name: 'T-Shirt Printing',     desc: 'Custom shirts, caps and uniforms with lasting prints.',  price: 15000,  unit: 'per piece' },
-  { id: 'branding', icon: '🎨', name: 'Logo & Branding',      desc: 'Logos, brand identity, stationery and social media kits.',  price: 150000, unit: 'per project' },
-  { id: 'stickers', icon: '🏷️', name: 'Stickers & Labels',    desc: 'Die-cut stickers and product labels, waterproof options.',  price: 300,    unit: 'per piece' },
-  { id: 'posters',  icon: '🖼️', name: 'Posters & Large Format', desc: 'Sharp posters, A3 to A0, photo and canvas prints.',price: 20000,  unit: 'per poster' },
-  { id: 'gifts',    icon: '☕', name: 'Mugs & Gifts',          desc: 'Personalised mugs, notebooks, pens and corporate gifts.',  price: 12000,  unit: 'per item' }
+  { id: 'branding', icon: '🎨', name: 'Logo & Branding',      desc: 'Logos, brand identity, stationery and social media kits.',  price: 100000, unit: 'per project' },
+  { id: 'stickers', icon: '🏷️', name: 'Stickers & Labels',    desc: 'Die-cut stickers and product labels, waterproof options.',  price: 200,    unit: 'per piece' },
+  { id: 'posters',  icon: '🖼️', name: 'Posters & Large Format', desc: 'Sharp posters, A3 to A0, photo and canvas prints.',price: 15000,  unit: 'per poster' },
+  { id: 'gifts',    icon: '☕', name: 'Mugs & Gifts',          desc: 'Personalised mugs, notebooks, pens and corporate gifts.',  price: 9000,  unit: 'per item' }
 ];
 
 const WORKS = [
