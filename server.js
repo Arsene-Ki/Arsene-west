@@ -10,7 +10,7 @@ const BUSINESS = {
   name: 'TZCO Printing & Design',
   phone: '+255 747072438',
   whatsapp: '255747072438',            // no + sign
-  email: 'info@tzco.co.tz',
+  email: 'ngoykitemba@gmail.com',
   address: 'Arusha, Tanzania',
   hours: 'Mon–Sat: 8:00 – 18:00',
   mapLat: -6.1630,                     // change to your shop's exact location
