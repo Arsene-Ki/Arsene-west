@@ -20,12 +20,12 @@ const DATA_FILE = path.join(__dirname, 'data.json');
 
 /* ------------------------------- DATA ------------------------------------ */
 const SERVICES = [
-  { id: 'cards',    icon: '💳', name: 'Business Cards',       desc: 'Premium paper, matte or gloss, spot UV and more.',  price: 50000,  unit: 'per 100 cards' },
-  { id: 'flyers',   icon: '📄', name: 'Flyers & Brochures',   desc: 'Full-colour A5/A4 flyers, tri-fold and bi-fold brochures.', price: 45000,  unit: 'per 100 pieces' },
+  { id: 'cards',    icon: '💳', name: 'Business Cards',       desc: 'Premium paper, matte or gloss, spot UV and more. TZS 50,000 per 100 cards.',  price: 500,    unit: 'per card' },
+  { id: 'flyers',   icon: '📄', name: 'Flyers & Brochures',   desc: 'Full-colour A5/A4 flyers, tri-fold and bi-fold brochures.', price: 450,    unit: 'per piece' },
   { id: 'banners',  icon: '🚩', name: 'Banners & Roll-ups',   desc: 'Durable large-format banners for events and shops.',  price: 25000,  unit: 'per 1 square meter' },
   { id: 'tshirts',  icon: '👕', name: 'T-Shirt Printing',     desc: 'Custom shirts, caps and uniforms with lasting prints.',  price: 15000,  unit: 'per piece' },
   { id: 'branding', icon: '🎨', name: 'Logo & Branding',      desc: 'Logos, brand identity, stationery and social media kits.',  price: 150000, unit: 'per project' },
-  { id: 'stickers', icon: '🏷️', name: 'Stickers & Labels',    desc: 'Die-cut stickers and product labels, waterproof options.',  price: 30000,  unit: 'per 100 pieces' },
+  { id: 'stickers', icon: '🏷️', name: 'Stickers & Labels',    desc: 'Die-cut stickers and product labels, waterproof options.',  price: 300,    unit: 'per piece' },
   { id: 'posters',  icon: '🖼️', name: 'Posters & Large Format', desc: 'Sharp posters, A3 to A0, photo and canvas prints.',price: 20000,  unit: 'per poster' },
   { id: 'gifts',    icon: '☕', name: 'Mugs & Gifts',          desc: 'Personalised mugs, notebooks, pens and corporate gifts.',  price: 12000,  unit: 'per item' }
 ];
@@ -101,17 +101,21 @@ const server = http.createServer(async (req, res) => {
     if (req.method === 'POST' && p === '/api/orders') {
       const b = await readBody(req);
       const service = SERVICES.find(s => s.id === b.service);
+      const quantity = Number(b.quantity);
+      if (!Number.isSafeInteger(quantity) || quantity < 1 || quantity > 100000) {
+        return send(res, 400, { error: 'Quantity must be a whole number between 1 and 100,000.' });
+      }
       const order = {
         ref: newRef(),
         name: clean(b.name, 80),
         phone: clean(b.phone, 30),
         email: clean(b.email, 120),
         service: service ? service.name : '',
-        quantity: Math.max(1, Math.min(100000, parseInt(b.quantity, 10) || 1)),
+        quantity: quantity,
         deadline: clean(b.deadline, 20),
         delivery: b.delivery === 'delivery' ? 'Delivery' : 'Pickup',
         details: clean(b.details, 1500),
-        estimate: service ? service.price * (parseFloat(b.quantity) || 1) : 0,
+        estimate: service ? service.price * quantity : 0,
         status: 'New',
         createdAt: new Date().toISOString()
       };
@@ -474,7 +478,7 @@ footer{background:var(--blue-d);color:#cfe0f1;padding:50px 0 24px}
         <label for="email">Email (optional)</label><input id="email" type="email" placeholder="you@example.com">
         <div class="row">
           <div><label for="service">Service *</label><select id="service" required></select></div>
-          <div><label for="quantity" id="qtyLabel">Quantity</label><input id="quantity" type="number" min="1" value="1"></div>
+          <div><label for="quantity" id="qtyLabel">Quantity</label><input id="quantity" type="number" min="1" max="100000" step="1" value="1" required></div>
         </div>
         <div class="row">
           <div><label for="deadline">Needed by</label><input id="deadline" type="date"></div>
@@ -619,8 +623,9 @@ footer{background:var(--blue-d);color:#cfe0f1;padding:50px 0 24px}
 
   function updateEstimate(){
     var s = services.find(function(x){ return x.id === $('#service').value; });
-    var q = Math.max(1, parseFloat($('#quantity').value) || 1);
-    $('#estimate').textContent = s ? fmt(s.price * q) : 'TZS 0';
+    var q = Number($('#quantity').value);
+    var validQuantity = Number.isSafeInteger(q) && q >= 1 && q <= 100000;
+    $('#estimate').textContent = s && validQuantity ? fmt(s.price * q) : 'TZS 0';
     $('#qtyLabel').textContent = s ? 'Quantity (' + s.unit + ')' : 'Quantity';
   }
   $('#service').onchange = updateEstimate;
