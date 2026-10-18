@@ -13,7 +13,7 @@ const BUSINESS = {
   email: 'ngoykitemba@gmail.com',
   address: 'Arusha, Tanzania',
   hours: 'Mon–Sat: 8:00 – 18:00',
-  mapLat: -6.1630,                     // change to your shop's exact location
+  mapLat: -3.36667,                     // change to your shop's exact location
   mapLng: 35.7516
 };
 const DATA_FILE = path.join(__dirname, 'data.json');
